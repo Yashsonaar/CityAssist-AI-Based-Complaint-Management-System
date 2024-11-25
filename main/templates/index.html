@@ -1,0 +1,39 @@
+{% extends "base.html"  %}
+{% block start %}
+    <hr>
+
+    <div class="container" >
+      <!-- <h1>This is sent mail</h1> -->
+      <a href="{% url 'send_email' %}" class="btn btn-success">Send Email</a>
+    </div>
+    <table class="container mt-5" style="width:100% ">
+        <tr>
+          <td>Sr. No.</td>
+          <td>Name</td>
+          <td>Marks</td>
+          <td>Pass ?</td>
+        </tr>
+        {% for stud in students %}
+        <tr>
+          <td>{{forloop.counter}}</td>
+          <td>{{stud.Name}}</td>
+          <td>{{stud.Marks}}</td>
+          <td>{% if stud.Marks >= 90 %}
+            👍
+            {% else %}
+            👎
+            {% endif %}
+          </td>          
+        </tr> 
+        {% endfor %}
+      </table>
+      <hr>
+      <p>
+      {% if "Tomato" in veggies %}
+      Tomato is present
+      {% else %}
+      No
+      {% endif %}
+    </p>
+
+{% endblock %}
